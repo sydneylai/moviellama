@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  netflix_dvd: false
+  netflix_stream: false
+  amazon_stream: false
+  amazon_prime: false
+  box_office: false
+
+two:
+  netflix_dvd: false
+  netflix_stream: false
+  amazon_stream: false
+  amazon_prime: false
+  box_office: false
