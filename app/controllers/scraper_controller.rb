@@ -17,7 +17,6 @@ class ScraperController < ApplicationController
 		oscars = @result["Awards"].match(/(?<wins>[\d]+)\s+(o|Oscar)/)
 		@movie.oscars = ((oscars == nil || oscars["wins"] == nil) ? 0 : oscars["wins"])
 
-
   	@movie.title = @result["Title"]
   	@movie.year = @result["Year"]
   	@movie.release_date = @result["Released"]
@@ -25,7 +24,6 @@ class ScraperController < ApplicationController
   	@movie.poster_url = @result["Poster"]
   	@movie.plot = @result["Plot"]
   	@movie.runtime = @result["Runtime"]
-
   	
   	if @movie.save
   		render json: @movie

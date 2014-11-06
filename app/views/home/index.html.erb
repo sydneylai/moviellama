@@ -4,6 +4,16 @@
 	<%= label_tag(:q, 'Look up:') %>
 	<%= text_field_tag(:q, @q) %>
 	<%= submit_tag('Search') %>
+	<% if :q.present? %>
+		<% link_to 'Clear', movies_path %>
+	<% end %>
 <% end %>
 
-@q = @movie.title
+
+<div class="container movie-results">
+	<% @movies.each do |movie| %>
+		<h2><%=movie.title%></h2>
+		<h4><%=movie.year%></h4>
+
+	<% end %>
+</div>

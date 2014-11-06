@@ -4,9 +4,13 @@ class HomeController < ApplicationController
   	if(@q == "" || @q == nil)
   		@movies = Movie.all
   	else
-  		@movies = Movie.where("title like ? ", "%#{@q}%")
+  		Movie.obtain(@q)
+  		@movies =  Movie.where("lower(title) like ?", "%#{@q}%")
   	end
-  	render json: @movies
+  	
   end
 
+ 
 end
+
+## need to reset to search bar when going back

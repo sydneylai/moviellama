@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105060537) do
+ActiveRecord::Schema.define(version: 20141106080425) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 20141105060537) do
   end
 
   create_table "ratings", force: true do |t|
-    t.float    "imdb"
-    t.float    "rt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "rating"
+    t.string   "source"
+    t.integer  "movie_id"
   end
 
   create_table "sources", force: true do |t|
