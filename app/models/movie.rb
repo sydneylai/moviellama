@@ -12,8 +12,9 @@ class Movie < ActiveRecord::Base
   	end
 
   	@result["Search"].each do |result|
+
 	  	if self.exists?(title: result["Title"]) and self.exists?(year: result["Year"])
-	  		movie = Movie.where("title = ? and year = ? ", result["Title"], result["Year"]).first
+	  		@movie = Movie.where(["title = ? ", result["Title"] ]).first
 	  	else
 	  		url = "http://omdbapi.com/?tomatoes=true&i=" + result["imdbID"]
 	  		_r = HTTParty.get(URI.encode(url))
@@ -23,11 +24,11 @@ class Movie < ActiveRecord::Base
   			end
   			oscars = _r["Awards"].match(/(?<wins>[\d]+)\s+(o|Oscar)/)
   			oscars = ((oscars == nil || oscars["wins"] == nil) ? 0 : oscars["wins"])
-				movie = Movie.create({:title => _r["Title"],:year => _r["Year"],:release_date => _r["Released"],:genre => _r["Genre"],:poster_url => _r["Poster"],:plot => _r["Plot"],:runtime => _r["Runtime"] , :oscars => oscars, :imdbid => _r["imdbID"]})  		
-				movie.rating.create( {:source => "imdb", :rating => _r["imdbRating"]})
-  			movie.rating.create( {:source => "rt", :rating => _r["tomatoMeter"]})
+				@movie = Movie.create({:title => _r["Title"],:year => _r["Year"],:release_date => _r["Released"],:genre => _r["Genre"],:poster_url => _r["Poster"],:plot => _r["Plot"],:runtime => _r["Runtime"] , :oscars => oscars, :imdbid => _r["imdbID"]})  		
+				@movie.rating.create( {:source => "imdb", :rating => _r["imdbRating"]})
+  			@movie.rating.create( {:source => "rt", :rating => _r["tomatoMeter"]})
   		end
-  		self.feedSources movie
+  		self.feedSources @movie
   	end
 
   	return {:error => "" , :result => "Added	 new movies :) "}
