@@ -3,8 +3,6 @@ class Movie < ActiveRecord::Base
 	has_many :source
 
 	def self.obtain q
-		total = 0
-		oscares = []
   	url = "http://omdbapi.com/?s=" + q
   	@response = HTTParty.get(URI.encode(url))
   	@result = JSON.parse(@response.body)
@@ -15,26 +13,24 @@ class Movie < ActiveRecord::Base
 
   	@result["Search"].each do |result|
 	  	if self.exists?(title: result["Title"]) and self.exists?(year: result["Year"])
-	  		next
-			end
-  		url = "http://omdbapi.com/?tomatoes=true&i=" + result["imdbID"]
-  		_r = HTTParty.get(URI.encode(url))
-  		_r = JSON.parse(_r.body)
-  		if(_r["Type"]!="movie")
-  			next
+	  		movie = Movie.where("title = ? and year = ? ", result["Title"], result["Year"]).first
+	  	else
+	  		url = "http://omdbapi.com/?tomatoes=true&i=" + result["imdbID"]
+	  		_r = HTTParty.get(URI.encode(url))
+	  		_r = JSON.parse(_r.body)
+	  		if(_r["Type"]!="movie")
+  				next
+  			end
+  			oscars = _r["Awards"].match(/(?<wins>[\d]+)\s+(o|Oscar)/)
+  			oscars = ((oscars == nil || oscars["wins"] == nil) ? 0 : oscars["wins"])
+				movie = Movie.create({:title => _r["Title"],:year => _r["Year"],:release_date => _r["Released"],:genre => _r["Genre"],:poster_url => _r["Poster"],:plot => _r["Plot"],:runtime => _r["Runtime"] , :oscars => oscars, :imdbid => _r["imdbID"]})  		
+				movie.rating.create( {:source => "imdb", :rating => _r["imdbRating"]})
+  			movie.rating.create( {:source => "rt", :rating => _r["tomatoMeter"]})
   		end
-  		# self.getAmazon
-
-
-  		oscars = _r["Awards"].match(/(?<wins>[\d]+)\s+(o|Oscar)/)
-  		oscars = ((oscars == nil || oscars["wins"] == nil) ? 0 : oscars["wins"])
-  		@movie = Movie.create({:title => _r["Title"],:year => _r["Year"],:release_date => _r["Released"],:genre => _r["Genre"],:poster_url => _r["Poster"],:plot => _r["Plot"],:runtime => _r["Runtime"] , :oscars => oscars})
-  		@movie.rating.create( {:source => "imdb", :rating => _r["imdbRating"]})
-  		@movie.rating.create( {:source => "rt", :rating => _r["tomatoMeter"]})
-  		total = total + 1
+  		self.feedSources movie
   	end
 
-  	return {:error => "" , :result => "Added "+total.to_s+" new movies :) "}
+  	return {:error => "" , :result => "Added	 new movies :) "}
 	end
 
 	def llamaRating 
@@ -50,6 +46,21 @@ class Movie < ActiveRecord::Base
 		end
 	end
 
+	def self.feedSources m
+		return true
+		if m.imdbid ==nil
+			return false
+		end
+		url = "http://www.imdb.com/title/"+m.imdbid+"/"
+		response = HTTParty.get(URI.encode(url))
+		_url = (response.body).match(/\shref="(?<url>\/offsite\/\?.*watch-piv&token=[A-z0-9]*[^"]+)/i)
+		if _url != nil and _url["url"] != nil
+			m.source.create({:name => 'amazon-prime', :url =>_url["url"]})
+		end
+
+
+		
+	end
 
 	def self.obtainOld(q)
 		url = "http://omdbapi.com/?t=" + q
