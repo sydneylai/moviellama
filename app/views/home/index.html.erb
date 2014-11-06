@@ -14,6 +14,9 @@
 	<% @movies.each do |movie| %>
 		<h2><%=movie.title%></h2>
 		<h4><%=movie.year%></h4>
-
+		<%movie.rating.each do |r|%>
+			<%=r.ratingLabel %>: <%=r.getRating%>
+		<%end%>
+		<%=movie.llamaRating %>
 	<% end %>
 </div>

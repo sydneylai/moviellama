@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106080425) do
+ActiveRecord::Schema.define(version: 20141106090959) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -35,13 +35,11 @@ ActiveRecord::Schema.define(version: 20141106080425) do
   end
 
   create_table "sources", force: true do |t|
-    t.boolean  "netflix_dvd"
-    t.boolean  "netflix_stream"
-    t.boolean  "amazon_stream"
-    t.boolean  "amazon_prime"
     t.boolean  "box_office"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
+    t.string   "name"
   end
 
 end
