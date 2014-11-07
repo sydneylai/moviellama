@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   		Movie.obtain(@q)
   		@movies =  Movie.where("lower(title) like ?", "%#{@q}%")
   	end
-  	render json: @movies[0]
+  	# render json: @movies[0]
   end
 
   def search
