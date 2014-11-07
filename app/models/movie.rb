@@ -2,16 +2,22 @@ class Movie < ActiveRecord::Base
 	has_many :rating
 	has_many :source
 
-	def self.ratingsfilter
-		a = imdb_min
-
-		scope :rating, -> (imdb-rating) { where rating: rating}
-		scope :source, -> (rt-rating) { where rating: rating}
-		scope :source, -> (amazon) { where source: amazon}
-		scope :source, -> (amazon-prime) { where source: amazon-prime}
-		scope :source, -> (source) { where source: boxoffice}
+	
+	def self.yearFilter y
+		where("year = ?", y)
 	end
 
+	def self.yearMin y
+		where("year >= ?", y)
+	end
+
+	def self.yearMax y
+		where("year <= ?", y)
+	end
+
+	def self.minIMDB y
+		joins(:rating).merge(Rating.where("source = 'imdb' and rating > ? " , y))
+	end
 
 
 	def self.obtain q

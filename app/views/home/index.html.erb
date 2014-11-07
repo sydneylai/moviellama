@@ -5,6 +5,9 @@
 
 <%= form_tag('/', method: 'get') do %>
 	<%= text_field_tag(:q, @q) %>
+	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after') %>
+	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before') %>
+	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating') %>
 	<%= submit_tag('Search') %>
 	<%= submit_tag('Feeling Lucky') %>
 	<% if :q.present? %>
