@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root 'home#index'
+  root 'home#search'
 
   get 'scraper/scrape'
   get 'home/search'
