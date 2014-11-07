@@ -7,6 +7,7 @@
 	<%= label_tag(:q, 'Look up:') %>
 	<%= text_field_tag(:q, @q) %>
 	<%= submit_tag('Search') %>
+	<%= submit_tag('Feeling Lucky') %>
 	<% if :q.present? %>
 		<% link_to 'Clear', movies_path %>
 	<% end %>
