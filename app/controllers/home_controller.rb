@@ -11,6 +11,9 @@ class HomeController < ApplicationController
   end
 
   def search
+    @movies = Movie.where(nil)
+    @movies = @movies.status(params[:rating])
+    @movies = @movies.status(params[:source])
   end
 
  

@@ -3,8 +3,16 @@ class Movie < ActiveRecord::Base
 	has_many :source
 
 	def self.ratingsfilter
+		a = imdb_min
 
+		scope :rating, -> (imdb-rating) { where rating: rating}
+		scope :source, -> (rt-rating) { where rating: rating}
+		scope :source, -> (amazon) { where source: amazon}
+		scope :source, -> (amazon-prime) { where source: amazon-prime}
+		scope :source, -> (source) { where source: boxoffice}
 	end
+
+
 
 	def self.obtain q
   	url = "http://omdbapi.com/?s=" + q
