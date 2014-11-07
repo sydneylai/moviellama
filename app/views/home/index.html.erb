@@ -1,0 +1,22 @@
+<h1>Moviellama</h1>
+
+<%= form_tag('/', method: 'get') do %>
+	<%= label_tag(:q, 'Look up:') %>
+	<%= text_field_tag(:q, @q) %>
+	<%= submit_tag('Search') %>
+	<% if :q.present? %>
+		<% link_to 'Clear', movies_path %>
+	<% end %>
+<% end %>
+
+
+<div class="container movie-results">
+	<% @movies.each do |movie| %>
+		<h2><%=movie.title%></h2>
+		<h4><%=movie.year%></h4>
+		<%movie.rating.each do |r|%>
+			<%=r.ratingLabel %>: <%=r.getRating%>
+		<%end%>
+		<%=movie.llamaRating %>
+	<% end %>
+</div>
