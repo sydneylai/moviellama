@@ -1,17 +1,16 @@
 <div class="jumbotron2">
 
 <div class="container">
-<h1>Search For Your Fav Movie!</h1>
+<h1>Find My Movie!</h1>
 
 <%= form_tag('/', method: 'get') do %>
-	<%= label_tag(:q, 'Look up:') %>
 	<%= text_field_tag(:q, @q) %>
 	<%= submit_tag('Search') %>
+	<%= submit_tag('Feeling Lucky') %>
 	<% if :q.present? %>
 		<% link_to 'Clear', movies_path %>
 	<% end %>
 <% end %><br>
-
 </div>
 
 </div>
@@ -32,10 +31,11 @@
 </div>
 
 <br>
-<div class="container footer"
-<footer> save the drama for your llama </footer>
+<div class="container-fluid footer">
+
+<footer>save the drama for your llama </footer>
 </div>
-<br>
+
 
 </div>
 
