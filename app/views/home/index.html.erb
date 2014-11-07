@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron2">
 
 <div class="container">
 <h1>Search For Your Fav Movie!</h1>
@@ -10,22 +10,24 @@
 	<% if :q.present? %>
 		<% link_to 'Clear', movies_path %>
 	<% end %>
-<% end %>
+<% end %><br>
 
 </div>
 
 </div>
 
-<div class="jumbotron">
+<div class="jumbotron3">
 
 <div class="container movie-results">
 	<% @movies.each do |movie| %>
 		<h2><%=movie.title%></h2>
 		<h4><%=movie.year%></h4>
+		<div class="container ratingsresults">
 		<%movie.rating.each do |r|%>
-			<%=r.ratingLabel %>: <%=r.getRating%>
+			<%=r.ratingLabel %>: <%=r.getRating%><br>
 		<%end%>
 		<%=movie.llamaRating %>
+		</div>
 	<% end %>
 </div>
 

@@ -14,3 +14,25 @@
  *= require_self
  */
  @import 'bootstrap';
+
+ @import url(http://fonts.googleapis.com/css?family=Oswald);
+
+ .jumbotron {
+ 	background-color: #FF6155;
+ 	font-family: Oswald;
+ 	color: black;
+ }
+
+ .jumbotron2 {
+ 	background-color: #FF6155;
+ 	font-family: Oswald;
+ 	color: black;
+ }
+
+ .jumbotron3 {
+ 	background-color: white;
+ 		font-family: Oswald;
+ 	color: black;
+ }
+
+
