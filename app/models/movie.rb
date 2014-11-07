@@ -57,10 +57,7 @@ class Movie < ActiveRecord::Base
 		_url = (response.body).match(/\shref="(?<url>\/offsite\/\?.*watch-piv&token=[A-z0-9]*[^"]+)/i)
 		if _url != nil and _url["url"] != nil
 			m.source.create({:name => 'amazon-prime', :url =>_url["url"]})
-		end
-
-
-		
+		end		
 	end
 
 	def self.obtainOld(q)
