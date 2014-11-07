@@ -18,13 +18,14 @@
  @import url(http://fonts.googleapis.com/css?family=Oswald);
 
  .jumbotron {
- 	background-color: #FF6155;
+ 	background-color: white;
  	font-family: Oswald;
- 	color: black;
+ 	color: red;
  }
 
  .jumbotron2 {
- 	background-color: #FF6155;
+ 	text-align: center;
+ 	background-color: white;
  	font-family: Oswald;
  	color: black;
  }
@@ -35,4 +36,8 @@
  	color: black;
  }
 
+ .footer {
+ 	text-align: center;
+	color: #FF6155;
+}
 
