@@ -10,5 +10,8 @@ class HomeController < ApplicationController
   	render json: @movies[0]
   end
 
+  def search
+  end
+
  
 end
