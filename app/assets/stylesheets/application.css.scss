@@ -38,6 +38,18 @@
 
  .footer {
  	text-align: center;
-	color: #f2392c;
+	color: white;
+	background-color: #f2392c;
+	height: 70px;
+	margin: 0;
+	padding:0;
+	// line-height: 50px;
+	footer {
+		height: 70px;
+		line-height: 70px;
+		font-weight: bold;
+		font-size: 2em;
+	}
 }
+
 
