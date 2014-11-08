@@ -16,6 +16,7 @@
  @import 'bootstrap';
 
  @import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 
  .jumbotron {
 	background-color: white;
@@ -85,5 +86,6 @@
 .findertitle {
 	color: #f2392c;
 	font-size: 6em;
+	font-family: Open Sans Condensed;
 }
 
