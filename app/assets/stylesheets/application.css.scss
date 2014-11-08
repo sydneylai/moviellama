@@ -20,10 +20,12 @@
  .jumbotron {
 	background-color: white;
 	font-family: Oswald;
-	color: #d82013;
+	font-weight: 300;
+	color: black;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 	padding-top: 6px;
+	font-size: 5em;
 
 	.container {
 		margin-bottom: 2px;
@@ -72,13 +74,16 @@
 
 .searchbtn {
 	background-color: #f2392c;
+	color: white;
 }
 
 .luckybtn {
 	background-color: #f2392c;
+	color: white;
 }
 
 .findertitle {
 	color: #f2392c;
+	font-size: 6em;
 }
 
