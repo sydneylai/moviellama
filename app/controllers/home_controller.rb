@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-  	@q = params[:q]
+  	@q = params[:q].to_s
     @ymin = params[:ymin]
     @ymax = params[:ymax]
     @y = params[:y]
