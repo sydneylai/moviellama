@@ -3,10 +3,10 @@
 <h1 class="findertitle">Find My Movie!</h1>
 
 <%= form_tag('/', method: 'get') do %>
-	<%= text_field_tag(:q, @q, :placeholder => 'title') %>
+	<%= text_field_tag(:q, @q, :placeholder => 'title', :class => "searchfield") %>
 	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
 	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
-	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %>
+	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %><br>
 	<%= submit_tag('Search', :class => "searchbtn") %>
 	<%= submit_tag('Feeling Lucky', :class => "luckybtn") %>
 	<% if :q.present? %>
@@ -19,10 +19,11 @@
 
 <div class="jumbotron3">
 
-<div class="container movie-results">
+<div class="container movie-results notfound">
 	<% if @movies.empty? %>
-		<h2>Sorry, no such drama in the llamabase :(</h2>
-		<img src="<%= asset_path('sadllama.jpeg') %>" />
+		<h2 class="llamaerror"> We're sorry, our army of llamas can't find your movie! </h2>
+		<img class="" src="<%= asset_path('sadllama.jpeg') %>" />
+		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
 	<% end %>
 	<% @movies.each do |movie| %>
 		<%= image_tag movie.poster_url%>

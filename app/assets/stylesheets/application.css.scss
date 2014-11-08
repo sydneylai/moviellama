@@ -31,7 +31,12 @@
 	.container {
 		margin-bottom: 2px;
 	}
-	
+	a {
+		color: black;
+	}
+	a:hover  {
+		text-decoration: none;
+	}
 }
 
 
@@ -101,6 +106,18 @@
 	font-size: 2em;
 }
 
+.llamaerror {
+	text-align: center;
+}
 
+.llamaerror img {
+	width: 200px;
+	margin: 0 auto;
+}
 
+.notfound img {
+	display: block;
+	width: 80%;
+	margin: 1em 10%;
+}
 
