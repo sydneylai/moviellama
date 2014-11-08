@@ -21,8 +21,9 @@
 
 <div class="container movie-results">
 	<% if @movies.empty? %>
-		<h2 class="llamaerror">Sorry, no such drama in the llamabase!</h2>
+		<h2 class="llamaerror">Sorry, there's no such drama in the llamabase!</h2>
 		<center><img src="<%= asset_path('sadllama.jpeg') %>" /></center>
+		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
 	<% end %>
 	<% @movies.each do |movie| %>
 		<h2><%=movie.title%> (<%=movie.year%>)</h2>
