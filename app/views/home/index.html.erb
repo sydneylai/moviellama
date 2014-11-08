@@ -3,10 +3,10 @@
 <h1 class="findertitle">Find My Movie!</h1>
 
 <%= form_tag('/', method: 'get') do %>
-	<%= text_field_tag(:q, @q) %>
-	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after') %>
-	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before') %>
-	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating') %>
+	<%= text_field_tag(:q, @q, :class => "searchfield") %>
+	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
+	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
+	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %>
 	<%= submit_tag('Search', :class => "searchbtn") %>
 	<%= submit_tag('Feeling Lucky', :class => "luckybtn") %>
 	<% if :q.present? %>
