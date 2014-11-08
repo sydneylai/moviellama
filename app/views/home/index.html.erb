@@ -6,9 +6,9 @@
 	<%= text_field_tag(:q, @q, :placeholder => 'title', :class => "searchfield") %>
 	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
 	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
-	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %><br>
-	<%= submit_tag('Search', :class => "searchbtn") %>
-	<%= submit_tag('Feeling Lucky', :class => "luckybtn") %>
+	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %><br><br>
+	<%= submit_tag('Search', :class => "btn searchbtn") %>
+	<%= submit_tag('Feeling Lucky', :class => "btn luckybtn") %>
 	<% if :q.present? %>
 		<% link_to 'Clear', movies_path %>
 	<% end %>
