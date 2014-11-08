@@ -23,6 +23,7 @@ class HomeController < ApplicationController
     if @imdbmin != "" and @imdbmin != nil
       @movies = @movies.minIMDB @imdbmin
     end
+    render json: @movies
     
     
     

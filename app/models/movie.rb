@@ -84,7 +84,10 @@ class Movie < ActiveRecord::Base
       _url = response.match(/\shref="(?<url>\/offsite\/\?.*watch-aiv&token=[A-z0-9]*[^"]+)/i)      
       m.source.create({:name => 'amazon-instant-video', :url =>_url["url"], :price => _price["price"] })
     end
-
+    _boxoffice = response.match(/(?<theater>watch in theaters)/i)
+    if _url != nil and _url["url"] != nil
+      m.source.create({:name => 'boxoffice', :url =>_url["url"]})
+    end
 
 	end
 
