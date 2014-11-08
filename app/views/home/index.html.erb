@@ -31,10 +31,10 @@
 		<% end %>
 		<h2><%=movie.title%> (<%=movie.year%>)</h2>
 		<div class="container ratingsresults">
-		<%movie.rating.each do |r|%>
-			<%=r.ratingLabel %>: <%=r.getRating%><br>
-		<%end%>
-		<%=movie.llamaRating %>
+			<%movie.rating.each do |r|%>
+				<%=r.ratingLabel %>: <%=r.getRating%><br>
+			<%end%>
+			<%=movie.llamaRating %>
 		<br>
 		<%movie.source.each do |s|%>
 			<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
