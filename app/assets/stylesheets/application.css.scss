@@ -85,6 +85,7 @@
 	font-family: Open Sans Condensed;
 	height: 50px;
 	font-size: 2em;
+	border-radius: 5px;
 }
 
 .luckybtn {
@@ -93,6 +94,7 @@
 	font-family: Open Sans Condensed;
 	height: 50px;
 	font-size: 2em;
+	border-radius: 5px;
 }
 
 .findertitle {
@@ -104,6 +106,9 @@
 .searchfield {
 	height: 50px;
 	font-size: 2em;
+	border-radius: 5px;
+	padding-left: 10px;
+	border: 2px solid black;
 }
 
 .llamaerror {
