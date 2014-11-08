@@ -25,12 +25,17 @@
 		<img src="<%= asset_path('sadllama.jpeg') %>" />
 	<% end %>
 	<% @movies.each do |movie| %>
+		<%= image_tag movie.poster_url%>
 		<h2><%=movie.title%> (<%=movie.year%>)</h2>
 		<div class="container ratingsresults">
 		<%movie.rating.each do |r|%>
 			<%=r.ratingLabel %>: <%=r.getRating%><br>
 		<%end%>
 		<%=movie.llamaRating %>
+		<br>
+		<%movie.source.each do |s|%>
+			<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
+		<%end%>
 		</div>
 	<% end %>
 </div>

@@ -19,7 +19,8 @@ class Movie < ActiveRecord::Base
 		joins(:rating).merge(Rating.where("source = 'imdb' and rating > ? " , y))
 	end
 
-	def amazonStream y
+# need to fix this
+	def self.amazonStream y
 		joins(:source).merge(Source.where("source = 'imdb' and rating > ? " , y))
 	end
 
@@ -49,8 +50,8 @@ class Movie < ActiveRecord::Base
 				@movie = Movie.create({:title => _r["Title"],:year => _r["Year"],:release_date => _r["Released"],:genre => _r["Genre"],:poster_url => _r["Poster"],:plot => _r["Plot"],:runtime => _r["Runtime"] , :oscars => oscars, :imdbid => _r["imdbID"]})  		
 				@movie.rating.create( {:source => "imdb", :rating => _r["imdbRating"]})
   			@movie.rating.create( {:source => "rt", :rating => _r["tomatoMeter"]})
+  			feedSources @movie
   		end
-  		self.feedSources @movie
   	end
 
   	return {:error => "" , :result => "Added new movies :) "}
@@ -70,16 +71,22 @@ class Movie < ActiveRecord::Base
 	end
 
 	def self.feedSources m
-		return true
 		if m.imdbid ==nil
-			return false
-		end
-		url = "http://www.imdb.com/title/"+m.imdbid+"/"
-		response = HTTParty.get(URI.encode(url))
-		_url = (response.body).match(/\shref="(?<url>\/offsite\/\?.*watch-piv&token=[A-z0-9]*[^"]+)/i)
-		if _url != nil and _url["url"] != nil
-			m.source.create({:name => 'amazon-prime', :url =>_url["url"]})
-		end		
+      render json: {:lol => 'cat'}
+    end
+    url = "http://www.imdb.com/title/"+m.imdbid+"/"
+    response = HTTParty.get(URI.encode(url))
+    _url = response.match(/\shref="(?<url>\/offsite\/\?.*watch-piv&token=[A-z0-9]*[^"]+)/i)
+    if _url != nil and _url["url"] != nil
+      m.source.create({:name => 'amazon-prime', :url =>_url["url"]})
+    end
+    _price = response.match(/from[\s+]\$(?<price>\d+\.\d\d)[\s+]on/i)
+    if _price != nil and _price["price"] != nil
+      _url = response.match(/\shref="(?<url>\/offsite\/\?.*watch-aiv&token=[A-z0-9]*[^"]+)/i)      
+      m.source.create({:name => 'amazon-instant-video', :url =>_url["url"], :price => _price["price"] })
+    end
+
+
 	end
 
 	def self.obtainOld(q)
