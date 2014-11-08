@@ -2,6 +2,24 @@ class Movie < ActiveRecord::Base
 	has_many :rating
 	has_many :source
 
+	
+	def self.yearFilter y
+		where("year = ?", y)
+	end
+
+	def self.yearMin y
+		where("year >= ?", y)
+	end
+
+	def self.yearMax y
+		where("year <= ?", y)
+	end
+
+	def self.minIMDB y
+		joins(:rating).merge(Rating.where("source = 'imdb' and rating > ? " , y))
+	end
+
+
 	def self.obtain q
   	url = "http://omdbapi.com/?s=" + q
   	@response = HTTParty.get(URI.encode(url))
@@ -40,7 +58,7 @@ class Movie < ActiveRecord::Base
 
 		if imdbscore == nil or rtscore == nil
 			return "Llama doesn't know" 
-		elsif imdbscore.rating > 7.0 and rtscore.rating > 80
+		elsif imdbscore.rating > 7.0 and rtscore.rating > 70
 			return "Llama Says: PASS!"
 		else
 			return "Llama Says: FAIL!"
