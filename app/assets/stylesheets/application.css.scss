@@ -16,14 +16,27 @@
  @import 'bootstrap';
 
  @import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 
  .jumbotron {
- 	background-color: white;
- 	font-family: Oswald;
- 	color: #f2392c;
- }
+	background-color: white;
+	font-family: Oswald;
+	font-weight: 300;
+	color: black;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 6px;
+	font-size: 5em;
+
+	.container {
+		margin-bottom: 2px;
+	}
+	
+}
+
 
  .jumbotron2 {
+ 	margin-top: 1px;
  	text-align: center;
  	background-color: white;
  	font-family: Oswald;
@@ -37,6 +50,7 @@
  }
 
  .footer {
+ 	font-family: Open Sans Condensed;
  	text-align: center;
 	color: white;
 	background-color: #f2392c;
@@ -51,5 +65,42 @@
 		font-size: 2em;
 	}
 }
+
+.llamalogo {
+	width: 200px;
+}
+
+.topbar h1 {
+	float: left;
+}
+
+.searchbtn {
+	background-color: #fa8043;
+	color: white;
+	font-family: Open Sans Condensed;
+	height: 50px;
+	font-size: 2em;
+}
+
+.luckybtn {
+	background-color: #6cb1ba;
+	color: white;
+	font-family: Open Sans Condensed;
+	height: 50px;
+	font-size: 2em;
+}
+
+.findertitle {
+	color: #f2392c;
+	font-size: 6em;
+	font-family: Open Sans Condensed;
+}
+
+.searchfield {
+	height: 50px;
+	font-size: 2em;
+}
+
+
 
 

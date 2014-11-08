@@ -1,19 +1,18 @@
-<div class="jumbotron2">
+ <div class="jumbotron2"> 
 
-<div class="container">
-<h1>Find My Movie!</h1>
+<h1 class="findertitle">Find My Movie!</h1>
 
 <%= form_tag('/', method: 'get') do %>
 	<%= text_field_tag(:q, @q, :placeholder => 'title') %>
-	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after') %>
-	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before') %>
-	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating') %>
-	<%= submit_tag('Search') %>
-	<%= submit_tag("I'm Feeling Lucky") %>
+	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
+	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
+	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %>
+	<%= submit_tag('Search', :class => "searchbtn") %>
+	<%= submit_tag('Feeling Lucky', :class => "luckybtn") %>
 	<% if :q.present? %>
 		<% link_to 'Clear', movies_path %>
 	<% end %>
-<% end %><br>
+<% end %><br><br>
 </div>
 
 </div>
@@ -37,6 +36,11 @@
 </div>
 
 <br>
+<br>
+<br>
+<br>
+
+
 <div class="container-fluid footer">
 
 <footer>save the drama for your llama </footer>
