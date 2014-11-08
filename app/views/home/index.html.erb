@@ -3,7 +3,7 @@
 <h1 class="findertitle">Find My Movie!</h1>
 
 <%= form_tag('/', method: 'get') do %>
-	<%= text_field_tag(:q, @q, :placeholder => 'title') %>
+	<%= text_field_tag(:q, @q, :placeholder => 'title', :class => "searchfield") %>
 	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
 	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
 	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %>
@@ -21,8 +21,8 @@
 
 <div class="container movie-results">
 	<% if @movies.empty? %>
-		<h2>Sorry, no such drama in the llamabase :(</h2>
-		<img src="<%= asset_path('sadllama.jpeg') %>" />
+		<h2 class="llamaerror">Sorry, no such drama in the llamabase!</h2>
+		<center><img src="<%= asset_path('sadllama.jpeg') %>" /></center>
 	<% end %>
 	<% @movies.each do |movie| %>
 		<h2><%=movie.title%> (<%=movie.year%>)</h2>
