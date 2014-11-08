@@ -7,9 +7,11 @@ class HomeController < ApplicationController
     @imdbmin = params[:imdbmin]
   	if(@q == "" and @q == nil)
   		@movies = Movie.all
-  	else
+    elsif
   		Movie.obtain(@q)
   		@movies =  Movie.where("lower(title) like ?", "%#{@q}%")
+    elsif @movies == nil
+      return {:error => "Sorry, that movie is not in the llamabase :'("}
   	end
     if @y != "" and @y != nil
       @movies = @movies.yearFilter @y

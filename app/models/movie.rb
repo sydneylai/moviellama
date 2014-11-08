@@ -19,14 +19,18 @@ class Movie < ActiveRecord::Base
 		joins(:rating).merge(Rating.where("source = 'imdb' and rating > ? " , y))
 	end
 
+	def amazonStream y
+		joins(:source).merge(Source.where("source = 'imdb' and rating > ? " , y))
+	end
+
 
 	def self.obtain q
   	url = "http://omdbapi.com/?s=" + q
   	@response = HTTParty.get(URI.encode(url))
   	@result = JSON.parse(@response.body)
 
-  	if @result["Search"]==nil
-  		return {:error => "The request failed :'( "}
+  	if @result["Search"] == nil
+  		return {:error => "Sorry, that movie is not in the llamabase :'("}
   	end
 
   	@result["Search"].each do |result|
@@ -49,7 +53,7 @@ class Movie < ActiveRecord::Base
   		self.feedSources @movie
   	end
 
-  	return {:error => "" , :result => "Added	 new movies :) "}
+  	return {:error => "" , :result => "Added new movies :) "}
 	end
 
 	def llamaRating 
