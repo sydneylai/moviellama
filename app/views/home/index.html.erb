@@ -26,9 +26,8 @@
 		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
 	<% end %>
 	<% @movies.each do |movie| %>
-		<% unless movie.poster_url == "N/A" %>
-			<%= image_tag movie.poster_url%>
-		<% end %>
+		<div class="row">
+		<div "col-sm-"
 		<h2><%=movie.title%> (<%=movie.year%>)</h2>
 		<div class="container ratingsresults">
 			<%movie.rating.each do |r|%>
@@ -39,6 +38,12 @@
 		<%movie.source.each do |s|%>
 			<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
 		<%end%>
+		</div>
+		<div class="postersettings">
+		<% unless movie.poster_url == "N/A" %>
+			<%= image_tag movie.poster_url%>
+		<% end %>
+		</div>
 		</div>
 	<% end %>
 </div>
