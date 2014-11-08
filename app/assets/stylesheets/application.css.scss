@@ -20,19 +20,20 @@
  .jumbotron {
 	background-color: white;
 	font-family: Oswald;
-	color: #f2392c;
+	color: #d82013;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 6px;
 
-	.siteheader {
-		color: #f2392c;
-		font-family: Oswald;
-		margin-left: 20px;
-
-	
+	.container {
+		margin-bottom: 2px;
 	}
+	
+}
 
- 		}
 
  .jumbotron2 {
+ 	margin-top: 1px;
  	text-align: center;
  	background-color: white;
  	font-family: Oswald;
@@ -62,12 +63,22 @@
 }
 
 .llamalogo {
-	width: 100px;
+	width: 200px;
 }
 
 .topbar h1 {
 	float: left;
 }
 
+.searchbtn {
+	background-color: #f2392c;
+}
 
+.luckybtn {
+	background-color: #f2392c;
+}
+
+.findertitle {
+	color: #f2392c;
+}
 
