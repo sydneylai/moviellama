@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20141109023053) do
   create_table "sources", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "url",        limit: 255
+    t.text     "url",        limit: 5000
     t.string   "name"
     t.integer  "movie_id"
     t.float    "price"
