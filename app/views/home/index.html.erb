@@ -1,6 +1,6 @@
  <div class="jumbotron2"> 
 
- 	<h1 class="findertitle">Find My Movie!</h1>
+<h1 class="findertitle">Find My Movie!</h1>
 
 <%= form_tag('/', method: 'get') do %>
 	<%= text_field_tag(:q, @q, :placeholder => 'title', :class => "searchfield") %>
@@ -13,17 +13,17 @@
 		<% link_to 'Clear', movies_path %>
 	<% end %>
 <% end %><br><br>
+</div>
 
 </div>
 
 <div class="jumbotron3">
 
-	<div class="container movie-results notfound">
-		<% if @movies.empty? %>
+<div class="container movie-results notfound">
+	<% if @movies.empty? %>
 		<h2 class="llamaerror"> We're sorry, our army of llamas can't find your movie! </h2>
 		<img class="" src="<%= asset_path('sadllama.jpeg') %>" />
 		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
-
 	<% end %>
 	<% @movies.each do |movie| %>
 		<div class="row">
@@ -44,54 +44,28 @@
 				<%end%>
 			<img class="source" src="<%=asset_path(Movie.sourceimage s.name) %>">
 			</a>
+
 		<%end%>
 		</div>
 		<div class="postersettings">
 		<% unless movie.poster_url == "N/A" %>
 			<%= image_tag movie.poster_url%>
 		<% end %>
-		<div class="row">
-			<% @movies.each do |movie| %>
-			<div class="col-sm-12 movie">
-				<div class="col-sm-3">
-					<div class="postersettings">
-						<% if movie.poster_url == "N/A" %>
-							<img class="" src="<%= asset_path('movieposterunavail.png') %>" />
-						<% else %>
-							<%= image_tag movie.poster_url%>
-						<% end %>
-
-					</div>	
-				</div>
-				<div class="col-sm-9">
-					<h2><%=movie.title%> (<%=movie.year%>)</h2>
-					<div class="container ratingsresults">
-						<%movie.rating.each do |r|%>
-						<%=r.ratingLabel %>: <%=r.getRating%><br>
-						<%end%>
-						<%=movie.llamaRating %>
-						<br>
-						<%movie.source.each do |s|%>
-						<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
-						<%end%>
-					</div>
-				</div>
-
-			</div>
-			<% end %>
 		</div>
-	</div>
+		</div>
+	<% end %>
+</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
+<br>
+<br>
+<br>
+<br>
 
 
-	<div class="container-fluid footer">
+<div class="container-fluid footer">
 
-		<footer>save the drama for your llama </footer>
-	</div>
+<footer>save the drama for your llama </footer>
+</div>
 
 
 </div>
