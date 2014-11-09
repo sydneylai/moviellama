@@ -63,9 +63,9 @@ class Movie < ActiveRecord::Base
 		if imdbscore == nil or rtscore == nil
 			return "Llama doesn't know" 
 		elsif imdbscore.rating > 7.0 and rtscore.rating > 70
-			return "Llama Says: PASS!"
+			return "PASS!"
 		else
-			return "Llama Says: FAIL!"
+			return "FAIL!"
 		end
 	end
 

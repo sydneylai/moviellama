@@ -13,12 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
  @import 'bootstrap';
 
  @import url(https://fonts.googleapis.com/css?family=Oswald);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/glyphicons-halflings-regular.eot');
+    src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
 
  .jumbotron {
 	background-color: white;
@@ -140,35 +147,43 @@
 	clear:both;
 }
 
-.postersettings {
-	// width: 300px;
-	width: 200px;
-	img {
+.postersettings img {
 		width: 100%;
+		max-width: 200px;
 		max-height: 419px;
 		margin: 10px 5px;
 		padding-right: 20px;
-	}
-	float: left;
 }
 
 img.source {
 	width: 60px;
 }
 
-.ratingsresults {
+.results-ratings {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.4em;
+	border-bottom: 1px solid lightgray;
+	.icon {
+		width: 35px;
+		display: inline;
+		margin: 0 5px;
+	}
+}
+
+.results-plot {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+}
+
+.results-watch{
 	font-size: 2em;
 	font-family: Open Sans;
 }
 
-// .results-title h2 {
-// 	font-size: 2em;
-// 	font-family: Open Sans;
-// 	weight: bold;
-// 	padding-top: 8px;
-// }
 
-.details h2 {
-	padding-top: 8px;
+.results-subtitle {
+	font-size: 1.2em;
+	color: #999696;
+	font-family: 'open sans', sans-serif;
 }
 

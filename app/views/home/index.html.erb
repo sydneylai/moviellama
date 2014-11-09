@@ -19,17 +19,19 @@
 
 <div class="jumbotron3">
 
-	<div class="container movie-results notfound">
-		<% if @movies.empty? %>
-		<h2 class="llamaerror"> We're sorry, our army of llamas can't find your movie! </h2>
-		<img class="" src="<%= asset_path('sadllama.jpeg') %>" />
-		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
-		<% end %>
-		<div class="row">
+	<div class="container movie-results">
+		<div class="container notfound">
+			<% if @movies.empty? and @home != true %>
+			<h2 class="llamaerror"> We're sorry, our army of llamas can't find your movie! </h2>
+			<img class="" src="<%= asset_path('sadllama.jpeg') %>" />
+			<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
+			<% end %>
+		</div>
 
+		<div class="row">
 			<% @movies.each do |movie| %>
-			<div "col-sm-12 movie">
-				<div "col-sm-3">
+			<div class="col-sm-12 movie">
+				<div class="col-sm-3">
 				<div class="postersettings">
 				<% if movie.poster_url == "N/A" %>
 					<img class="" src="<%= asset_path('movieposterunavail.png') %>" />
@@ -38,15 +40,31 @@
 				<% end %>
 				</div>
 				</div>
-				<div class=" details">
+				<div class="col-sm-9 details">
 					<h2 class="results-title"><%=movie.title%> (<%=movie.year%>)</h2>
-					<div class="container ratingsresults">
+						<p class="results-subtitle"><%=movie.genre %> | <span class="glyphicon glyphicon-time"></span> <%= movie.runtime/60 %> hours <%= movie.runtime%60 %> minutes 
+							<% if movie.oscars > 0 %>
+							| <%=pluralize(movie.oscars, 'Oscar')%> 
+							<% end %>
+						</p>
+						
+						<div class="results-ratings">
 						<%movie.rating.each do |r|%>
-						<%=r.ratingLabel %>: <%=r.getRating%><br>
+							<% if r.source == 'imdb' %>
+								<a href="http://www.imdb.com/title/<%=movie.imdbid%>" target="_blank"><img class="icon" src="<%= asset_path('imdb.png') %>" /> </a>
+							<%else%>
+								<img class="icon" src="<%= asset_path('tomato.png') %>" />
+							<% end %>
+							<%=r.getRating%> 
 						<%end%>
-						<%=movie.llamaRating %>
-						<br>
-
+						<img class="icon" src="<%= asset_path('llama.jpg') %>" /><%=movie.llamaRating %>
+						</div>					
+						
+						<div class="results-plot">
+							<p><%=movie.plot%></p>
+						</div>
+						
+						<div class="results-watch">
 						<%movie.source.each do |s|%>
 						<a href="http://www.imdb.com<%=s.url%>" target="_blank" >
 							<%if s.price? %>
@@ -63,11 +81,6 @@
 				</div>
 				<% end %>
 			</div>
-
-			<br>
-			<br>
-			<br>
-			<br>
 
 		</div>
 	</div>

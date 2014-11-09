@@ -12,8 +12,9 @@ class HomeController < ApplicationController
     @ymax = params[:ymax]
     @y = params[:y]
     @imdbmin = params[:imdbmin]
-  	if(@q == "" and @q == nil)
-  		@movies = Movie
+  	if(@q == "" || @q == nil)
+  		@movies = []
+      @home = true
     else
   		Movie.obtain(@q)
   		@movies =  Movie.where("lower(title) like ?", "%#{@q}%")
@@ -31,7 +32,7 @@ class HomeController < ApplicationController
       @movies = @movies.minIMDB @imdbmin
     end
     
-    @movies = @movies.order('id DESC').take(10)
+    
     
   end
 
