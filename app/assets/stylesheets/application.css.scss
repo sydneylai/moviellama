@@ -132,6 +132,7 @@
 	height: 300px;
 	.details {
 		padding-left:20px;
+		padding-top: 8px;
 	}
 }
 
@@ -151,10 +152,8 @@
 	float: left;
 }
 
-
-
 img.source {
-	width: 20px;
+	width: 60px;
 }
 
 .ratingsresults {
@@ -162,9 +161,14 @@ img.source {
 	font-family: Open Sans;
 }
 
-.resultstitle {
-	font-size: 2em;
-	font-family: Open Sans;
-	weight: bold;
-}
+// .results-title h2 {
+// 	font-size: 2em;
+// 	font-family: Open Sans;
+// 	weight: bold;
+// 	padding-top: 8px;
+// }
+
+// .details h2 {
+// 	padding-top: 8px;
+// }
 

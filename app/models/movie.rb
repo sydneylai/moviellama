@@ -19,8 +19,8 @@ class Movie < ActiveRecord::Base
 		joins(:rating).merge(Rating.where("source = 'imdb' and rating > ? " , y))
 	end
 
-	def self.amazonStream y
-		joins(:source).merge(Source.where("source = 'imdb' and rating > ? " , y))
+	def self.amazonPrime y
+		joins(:source).merge(Source.where("amazon-prime = ?" , y))
 	end
 
 
