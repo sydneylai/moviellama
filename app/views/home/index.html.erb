@@ -32,7 +32,7 @@
 				<div "col-sm-3">
 				<div class="postersettings">
 				<% if movie.poster_url == "N/A" %>
-					<%= image_tag movieposterunavail.png %>
+					<img class="" src="<%= asset_path('movieposterunavail.png') %>" />
 				<% else %>
 					<%= image_tag movie.poster_url%>
 				<% end %>
