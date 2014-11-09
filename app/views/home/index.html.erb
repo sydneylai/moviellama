@@ -1,63 +1,72 @@
  <div class="jumbotron2"> 
 
-<h1 class="findertitle">Find My Movie!</h1>
+ 	<h1 class="findertitle">Find My Movie!</h1>
 
-<%= form_tag('/', method: 'get') do %>
-	<%= text_field_tag(:q, @q, :placeholder => 'title', :class => "searchfield") %>
-	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
-	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
-	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %><br><br>
-	<%= submit_tag('Search', :class => "btn searchbtn") %>
-	<%= submit_tag('Feeling Lucky', :class => "btn luckybtn") %>
-	<% if :q.present? %>
-		<% link_to 'Clear', movies_path %>
-	<% end %>
-<% end %><br><br>
-</div>
+ 	<%= form_tag('/', method: 'get') do %>
+ 	<%= text_field_tag(:q, @q, :placeholder => 'title', :class => "searchfield") %>
+ 	<%= text_field_tag(:ymin, @ymin, :placeholder => 'after', :class => "searchfield") %>
+ 	<%= text_field_tag(:ymax, @ymax, :placeholder => 'before', :class => "searchfield") %>
+ 	<%= text_field_tag(:imdbmin, @imdbmin, :placeholder => '>rating', :class => "searchfield") %><br><br>
+ 	<%= submit_tag('Search', :class => "btn searchbtn") %>
+ 	<%= submit_tag('Feeling Lucky', :class => "btn luckybtn") %>
+ 	<% if :q.present? %>
+ 	<% link_to 'Clear', movies_path %>
+ 	<% end %>
+ 	<% end %><br><br>
+ </div>
 
 </div>
 
 <div class="jumbotron3">
 
-<div class="container movie-results notfound">
-	<% if @movies.empty? %>
+	<div class="container movie-results notfound">
+		<% if @movies.empty? %>
 		<h2 class="llamaerror"> We're sorry, our army of llamas can't find your movie! </h2>
 		<img class="" src="<%= asset_path('sadllama.jpeg') %>" />
 		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
-	<% end %>
-	<% @movies.each do |movie| %>
-		<div class="row">
-		<div "col-sm-"
-		<h2><%=movie.title%> (<%=movie.year%>)</h2>
-		<div class="container ratingsresults">
-		<%movie.rating.each do |r|%>
-			<%=r.ratingLabel %>: <%=r.getRating%><br>
-		<%end%>
-		<%=movie.llamaRating %>
-		<br>
-		<%movie.source.each do |s|%>
-			<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
-		<%end%>
-		</div>
-		<div class="postersettings">
-		<% unless movie.poster_url == "N/A" %>
-			<%= image_tag movie.poster_url%>
 		<% end %>
+		<div class="row">
+			<% @movies.each do |movie| %>
+			<div class="col-sm-6 movie">
+				<div class="col-sm-6">
+					<div class="postersettings">
+						<% if movie.poster_url == "N/A" %>
+							<img class="" src="<%= asset_path('movieposterunavail.png') %>" />
+						<% else %>
+							<%= image_tag movie.poster_url%>
+						<% end %>
+
+					</div>	
+				</div>
+				<div class="col-sm-6">
+					<h2><%=movie.title%> (<%=movie.year%>)</h2>
+					<div class="container ratingsresults">
+						<%movie.rating.each do |r|%>
+						<%=r.ratingLabel %>: <%=r.getRating%><br>
+						<%end%>
+						<%=movie.llamaRating %>
+						<br>
+						<%movie.source.each do |s|%>
+						<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
+						<%end%>
+					</div>
+				</div>
+
+			</div>
+			<% end %>
 		</div>
-		</div>
-	<% end %>
-</div>
+	</div>
 
-<br>
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
-<div class="container-fluid footer">
+	<div class="container-fluid footer">
 
-<footer>save the drama for your llama </footer>
-</div>
+		<footer>save the drama for your llama </footer>
+	</div>
 
 
 </div>

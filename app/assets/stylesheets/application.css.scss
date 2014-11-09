@@ -126,7 +126,22 @@
 	margin: 1em 10%;
 }
 
+.movie {
+	height: 300px;
+}
+
+.movie:nth-child(1n+1){
+	clear:both;
+}
+
 .postersettings {
-	width: 300px;
+	// width: 300px;
+	width: 200px;
+	img {
+		width: 100%;
+		max-height: 419px;
+		margin: 10px 5px;
+	}
+	float: left;
 }
 
