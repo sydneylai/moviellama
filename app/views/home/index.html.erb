@@ -26,14 +26,17 @@
 		<h2 class="llamaerror"> Hint: Try searching without filters.</h2>
 		<% end %>
 		<div class="row">
+
 			<% @movies.each do |movie| %>
 			<div "col-sm-12 movie">
 				<div "col-sm-3">
-					<div class="postersettings">
-						<% unless movie.poster_url == "N/A" %>
-						<%= image_tag movie.poster_url%>
-						<% end %>
-					</div>
+				<div class="postersettings">
+				<% if movie.poster_url == "N/A" %>
+					<%= image_tag movieposterunavail.png %>
+				<% else %>
+					<%= image_tag movie.poster_url%>
+				<% end %>
+				</div>
 				</div>
 				<div "col-sm-9 details">
 					<h2><%=movie.title%> (<%=movie.year%>)</h2>

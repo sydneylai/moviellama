@@ -91,30 +91,9 @@ class Movie < ActiveRecord::Base
 	end
 
 	def self.sourceimage s
-		img = {'amazon-instant-video'=>'amazonicon.png', 'amazon-prime' =>'amazonprimeicon.png', 'boxoffice' => 'intheathersicon.png'}
+		img = {'amazon-instant-video'=>'amazonicon.png', 'amazon-prime' =>'amazonprimeicon.png', 'boxoffice' => 'intheatersicon.png'}
 		return img[s] unless img[s] == nil
 		return ''
-	end
-
-	def prime?
-		if self.source.where( name: 'amazon-prime' ).first != nil
-			return true
-		end
-		return false
-	end
-
-	def amazon?
-		if self.source.where( name: 'amazon-instant-video' ).first != nil
-			return true
-		end
-		return false
-	end
-
-	def boxoffice?
-		if self.source.where( name: 'boxoffice' ).first != nil
-			return true
-		end
-		return false
 	end
 
 	def self.obtainOld(q)
