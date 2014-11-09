@@ -45,9 +45,10 @@
 				<%end%>
 			<img class="source" src="<%=asset_path(Movie.sourceimage s.name) %>">
 			</a>
-
 		<%end%>
 		</div>
+
+<!-- 		image posters -->		
 		<div class="postersettings">
 		<% if movie.poster_url == "N/A" %>
 			<%= image_tag movieposterunavail.png %>
