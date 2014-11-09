@@ -85,8 +85,8 @@ class Movie < ActiveRecord::Base
       m.source.create({:name => 'amazon-instant-video', :url =>_url["url"], :price => _price["price"] })
     end
     _boxoffice = response.match(/(?<theater>watch in theaters)/i)
-    if _boxoffice != nil and _boxoffice["boxoffice"] != nil
-      m.source.create({:name => 'boxoffice', :boxoffice =>_boxoffice["boxoffice"]})
+    if _boxoffice != nil and _boxoffice["theater"] != nil
+      m.source.create({:name => 'boxoffice'})
     end
 	end
 
