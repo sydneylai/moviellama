@@ -16,7 +16,9 @@
  @import 'bootstrap';
 
  @import url(http://fonts.googleapis.com/css?family=Oswald);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
  .jumbotron {
 	background-color: white;
@@ -144,4 +146,15 @@
 	}
 	float: left;
 }
+
+.ratingsresults {
+	font-size: 2em;
+	font-family: Open Sans;
+}
+
+// .resultstitle {
+// 	font-size: 2em;
+// 	font-family: Open Sans;
+// 	weight: bold;
+// }
 

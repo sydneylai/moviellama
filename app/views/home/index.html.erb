@@ -27,8 +27,8 @@
 		<% end %>
 		<div class="row">
 			<% @movies.each do |movie| %>
-			<div class="col-sm-6 movie">
-				<div class="col-sm-6">
+			<div class="col-sm-12 movie">
+				<div class="col-sm-3">
 					<div class="postersettings">
 						<% if movie.poster_url == "N/A" %>
 							<img class="" src="<%= asset_path('movieposterunavail.png') %>" />
@@ -38,7 +38,7 @@
 
 					</div>	
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-9">
 					<h2><%=movie.title%> (<%=movie.year%>)</h2>
 					<div class="container ratingsresults">
 						<%movie.rating.each do |r|%>
