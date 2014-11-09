@@ -130,6 +130,9 @@
 
 .movie {
 	height: 300px;
+	.details {
+		padding-left:20px;
+	}
 }
 
 .movie:nth-child(1n+1){
@@ -143,6 +146,7 @@
 		width: 100%;
 		max-height: 419px;
 		margin: 10px 5px;
+		padding-right: 20px;
 	}
 	float: left;
 }
@@ -158,9 +162,9 @@ img.source {
 	font-family: Open Sans;
 }
 
-// .resultstitle {
-// 	font-size: 2em;
-// 	font-family: Open Sans;
-// 	weight: bold;
-// }
+.resultstitle {
+	font-size: 2em;
+	font-family: Open Sans;
+	weight: bold;
+}
 
