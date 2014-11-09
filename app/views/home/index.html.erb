@@ -38,8 +38,8 @@
 				<% end %>
 				</div>
 				</div>
-				<div "col-sm-9 details">
-					<h2><%=movie.title%> (<%=movie.year%>)</h2>
+				<div class=" details">
+					<h2 class="results-title"><%=movie.title%> (<%=movie.year%>)</h2>
 					<div class="container ratingsresults">
 						<%movie.rating.each do |r|%>
 						<%=r.ratingLabel %>: <%=r.getRating%><br>

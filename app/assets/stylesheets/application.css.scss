@@ -46,13 +46,13 @@
  	margin-top: 1px;
  	text-align: center;
  	background-color: white;
- 	font-family: Oswald;
+ 	font-family: Oswald, sans-serif;
  	color: black;
  }
 
  .jumbotron3 {
  	background-color: white;
- 		font-family: Oswald;
+ 	font-family: Oswald, sans-serif;
  	color: black;
  }
 
@@ -131,8 +131,8 @@
 .movie {
 	height: 300px;
 	.details {
-		padding-left:20px;
-		padding-top: 8px;
+		// padding-left:20px;
+		// padding-top: 8px;
 	}
 }
 
@@ -168,7 +168,7 @@ img.source {
 // 	padding-top: 8px;
 // }
 
-// .details h2 {
-// 	padding-top: 8px;
-// }
+.details h2 {
+	padding-top: 8px;
+}
 
