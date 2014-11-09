@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
+
+
   def index
   	@q = params[:q].to_s
+
+
+    url = "http://omdbapi.com/?t=" + @q
+    @response = HTTParty.get(URI.encode(url))
+
     @ymin = params[:ymin]
     @ymax = params[:ymax]
     @y = params[:y]
@@ -23,7 +30,6 @@ class HomeController < ApplicationController
     if @imdbmin != "" and @imdbmin != nil
       @movies = @movies.minIMDB @imdbmin
     end
-    render json: @movies
     
     
     

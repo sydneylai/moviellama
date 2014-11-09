@@ -35,8 +35,15 @@
 			<%end%>
 			<%=movie.llamaRating %>
 		<br>
+		
 		<%movie.source.each do |s|%>
-			<a href="http://www.imdb.com<%=s.url%>" target="_blank" ><%=s.name %> <%=s.price%></a>
+			<a href="http://www.imdb.com<%=s.url%>" target="_blank" >
+				<%if s.price? %>
+					Amazon price: 
+					<%=number_to_currency s.price%>
+				<%end%>
+			<img class="source" src="<%=asset_path(Movie.sourceimage s.name) %>">
+			</a>
 		<%end%>
 		</div>
 		<div class="postersettings">

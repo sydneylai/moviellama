@@ -25,7 +25,7 @@ class Movie < ActiveRecord::Base
 
 
 	def self.obtain q
-  	url = "http://omdbapi.com/?s=" + q
+  	url = "http://imdbapi.com/?s=" + q
   	@response = HTTParty.get(URI.encode(url))
   	@result = JSON.parse(@response.body)
 
@@ -38,7 +38,7 @@ class Movie < ActiveRecord::Base
 	  	if self.exists?(title: result["Title"]) and self.exists?(year: result["Year"])
 	  		@movie = Movie.where(["title = ? ", result["Title"] ]).first
 	  	else
-	  		url = "http://omdbapi.com/?tomatoes=true&i=" + result["imdbID"]
+	  		url = "http://imdbapi.com/?tomatoes=true&i=" + result["imdbID"]
 	  		_r = HTTParty.get(URI.encode(url))
 	  		_r = JSON.parse(_r.body)
 	  		if(_r["Type"]!="movie")
@@ -70,7 +70,7 @@ class Movie < ActiveRecord::Base
 	end
 
 	def self.feedSources m
-		if m.imdbid ==nil
+		if m.imdbid == nil
       render json: {:lol => 'cat'}
     end
     url = "http://www.imdb.com/title/"+m.imdbid+"/"
@@ -85,10 +85,36 @@ class Movie < ActiveRecord::Base
       m.source.create({:name => 'amazon-instant-video', :url =>_url["url"], :price => _price["price"] })
     end
     _boxoffice = response.match(/(?<theater>watch in theaters)/i)
-    if _url != nil and _url["url"] != nil
-      m.source.create({:name => 'boxoffice', :url =>_url["url"]})
+    if _boxoffice != nil and _boxoffice["boxoffice"] != nil
+      m.source.create({:name => 'boxoffice', :boxoffice =>_boxoffice["boxoffice"]})
     end
+	end
 
+	def self.sourceimage s
+		img = {'amazon-instant-video'=>'amazonicon.png', 'amazon-prime' =>'amazonprimeicon.png', 'boxoffice' => 'intheathersicon.png'}
+		return img[s] unless img[s] == nil
+		return ''
+	end
+
+	def prime?
+		if self.source.where( name: 'amazon-prime' ).first != nil
+			return true
+		end
+		return false
+	end
+
+	def amazon?
+		if self.source.where( name: 'amazon-instant-video' ).first != nil
+			return true
+		end
+		return false
+	end
+
+	def boxoffice?
+		if self.source.where( name: 'boxoffice' ).first != nil
+			return true
+		end
+		return false
 	end
 
 	def self.obtainOld(q)
