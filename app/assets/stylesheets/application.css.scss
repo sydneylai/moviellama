@@ -69,9 +69,8 @@ font-face {
 	color: white;
 	background-color: #f2392c;
 	height: 70px;
-	margin: 0;
+	margin-top: 20px;
 	padding:0;
-	// line-height: 50px;
 	footer {
 		height: 70px;
 		line-height: 70px;
@@ -110,6 +109,8 @@ font-face {
 	color: #f2392c;
 	font-size: 6em;
 	font-family: Open Sans Condensed;
+	margin: 30px auto;
+
 }
 
 .searchfield {
@@ -163,6 +164,7 @@ img.source {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.4em;
 	border-bottom: 1px solid lightgray;
+	padding-bottom: 7px;
 	.icon {
 		width: 35px;
 		display: inline;
@@ -173,6 +175,7 @@ img.source {
 .results-plot {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.2em;
+	margin-top: 5px;
 }
 
 .results-watch{

@@ -16,7 +16,11 @@ class Movie < ActiveRecord::Base
 	end
 
 	def self.minIMDB y
-		joins(:rating).merge(Rating.where("source = 'imdb' and rating > ? " , y))
+		joins(:rating).merge(Rating.where("source = 'imdb' and rating >= ? " , y))
+	end
+
+	def self.minRT y
+		joins(:rating).merge(Rating.where("source = 'rt' and rating >= ? " , y))
 	end
 
 	def self.amazonPrime y
@@ -44,7 +48,7 @@ class Movie < ActiveRecord::Base
 	  		if(_r["Type"]!="movie")
   				next
   			end
-  			oscars = _r["Awards"].match(/(?<wins>[\d]+)\s+(o|Oscar)/)
+  			oscars = _r["Awards"].match(/won[\s+](?<wins>[\d]+)\s+(o|Oscar)/)
   			oscars = ((oscars == nil || oscars["wins"] == nil) ? 0 : oscars["wins"])
 				@movie = Movie.create({:title => _r["Title"],:year => _r["Year"],:release_date => _r["Released"],:genre => _r["Genre"],:poster_url => _r["Poster"],:plot => _r["Plot"],:runtime => _r["Runtime"] , :oscars => oscars, :imdbid => _r["imdbID"]})  		
 				@movie.rating.create( {:source => "imdb", :rating => _r["imdbRating"]})

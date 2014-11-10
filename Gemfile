@@ -18,6 +18,8 @@ gem 'bootstrap-sass'
 
 gem 'jbuilder', '~> 2.0'
 
+gem 'imgur', :git => 'git://github.com/dncrht/imgur.git'
+
 gem 'httparty'
 gem 'json'
 # bundle exec rake doc:rails generates the API under doc/api.
